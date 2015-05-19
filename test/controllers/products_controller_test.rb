@@ -15,6 +15,10 @@ class ProductsControllerTest < ActionController::TestCase
     get :index
     assert_response :success
     assert_not_nil assigns(:products)
+    # assert_select '.products .list_actions', minimum: 3
+    # ['Show', 'Edit', 'Destroy'].each do |action|
+    #   assert_select '.products .list_actions a', action
+    # end
   end
 
   test "should get new" do
