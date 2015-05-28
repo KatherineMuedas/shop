@@ -17,7 +17,9 @@
     <% end %>  
   <% end %> 
 <% end %>
-<%= pluralize session[:counter], 'time' %>
+<% if session[:counter]>= 5 %>
+  <%= pluralize session[:counter], 'time' %>
+<% end %>  
 
 
 
