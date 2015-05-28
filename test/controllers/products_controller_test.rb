@@ -15,11 +15,19 @@ class ProductsControllerTest < ActionController::TestCase
     get :index
     assert_response :success
     assert_not_nil assigns(:products)
-    # assert_select '.products .list_actions', minimum: 3
-    # ['Show', 'Edit', 'Destroy'].each do |action|
-    #   assert_select '.products .list_actions a', action
-    # end
+    assert_select '.products .list_actions', minimum: 3
+    ['Show', 'Edit', 'Destroy'].each do |action|
+      assert_select '.products .list_actions a', action
+    end
   end
+
+  test 'test index page for no products' do
+    Product.delete_all
+    assert_equal 0 , Product.count
+    get :index
+    assert_response :success
+  end
+
 
   test "should get new" do
     get :new
